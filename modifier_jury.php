@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
     <title>Modifier Jury</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="output.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./src/output.css">
 </head>
 
 <body class="bg-gray-100 text-gray-900 flex justify-center items-center min-h-screen">

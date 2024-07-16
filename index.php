@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="./img/logo.webp">
-    <link rel="stylesheet" href="output.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="./img/SJ.png">
+    <link rel="stylesheet" href="./src/output.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 
     <title>Gestion des Jurys de Soutenance</title>
     <!-- Feather Icons -->
@@ -14,17 +14,52 @@
 </head>
 
 <body>
-    <nav class="font-sans flex flex-col text-center content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-white shadow sm:items-baseline w-full">
-        <div class="mb-2 sm:mb-0 flex flex-row">
-            <div class="h-10 w-10 self-center mr-2">
-                <a href="/"> <img class="h-10 w-10 self-center" src="./img/logo.webp" /></a>
-            </div>
-            <div>
-                <a href="/" class="text-2xl no-underline bg-gradient-to-r from-blue-700 to-sky-400 bg-clip-text text-transparent hover:text-blue-dark font-sans font-bold">SenJury</a><br>
+    <nav class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="relative flex items-center justify-between h-16">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg id="menu-open-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg id="menu-close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex-shrink-0">
+                        <a href="./index.php">
+                            <img class="h-8 w-auto" src="./img/SJ.png" alt="Logo">
+                        </a>
+                    </div>
+                    <div class="hidden sm:block sm:ml-6">
+                        <div class="flex space-x-4">
+                            <a href="index.php" class="text-gray-600 hover:underline px-3 py-2 rounded-md text-sm font-medium">Accueil</a>
+                            <a href="membres.php" class="text-gray-600 hover:underline px-3 py-2 rounded-md text-sm font-medium">Membres</a>
+                            <a href="jurys.php" class="text-gray-600 hover:underline px-3 py-2 rounded-md text-sm font-medium">Jurys</a>
+                            <a href="sujets.php" class="text-gray-600 hover:underline px-3 py-2 rounded-md text-sm font-medium">Sujets</a>
+                            <a href="etudiants.php" class="text-gray-600 hover:underline px-3 py-2 rounded-md text-sm font-medium">Étudiants</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <span class="text-gray-800 text-lg font-semibold">Bienvenue</span>
+                </div>
             </div>
         </div>
-        <div class="sm:mb-0 self-center">
-            <p class="text-xl text-gray-600">Bonjour !</p>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.php" class="text-gray-600 hover:underline block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+                <a href="membres.php" class="text-gray-600 hover:underline block px-3 py-2 rounded-md text-base font-medium">Membres</a>
+                <a href="jurys.php" class="text-gray-600 hover:underline block px-3 py-2 rounded-md text-base font-medium">Jurys</a>
+                <a href="sujets.php" class="text-gray-600 hover:underline block px-3 py-2 rounded-md text-base font-medium">Sujets</a>
+                <a href="etudiants.php" class="text-gray-600 hover:underline block px-3 py-2 rounded-md text-base font-medium">Étudiants</a>
+            </div>
         </div>
     </nav>
 
@@ -115,6 +150,20 @@
     <script>
         // Initialiser les icônes Feather
         feather.replace();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+
+            menuButton.addEventListener('click', function() {
+                const isMenuOpen = menu.classList.contains('hidden');
+                menu.classList.toggle('hidden', !isMenuOpen);
+                menuOpenIcon.classList.toggle('hidden', !isMenuOpen);
+                menuCloseIcon.classList.toggle('hidden', isMenuOpen);
+            });
+        });
     </script>
 </body>
 
